@@ -31,15 +31,20 @@
 <body>
     <div id = wrapper>
         <header>
-            <a href="login.php">ログイン画面</a>
+
         </header>
         <div id = "container">
+            <form>
+                <label for = "loginId">ログインID(メールアドレス)</label><br>
+                <input id = "loginId" type = "text" name = "loginId" value = ""><br>
 
+                <label for = "password">パスワード</label><br>
+                <input id = "password" type = "password" name = "password" value = ""><br>
+                
+                <input id = "btn" type = "submit" value = "ログイン">
+            </form>
         </div>
-
     </div>
-
-
 </body>
 </html>
 
