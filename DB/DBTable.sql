@@ -26,7 +26,8 @@ CREATE TABLE master_staffs (
 SELECT * FROM master_staffs;
 
 --テーブルの中身にデータを挿入
-INSERT INTO master_staffs ( staff_name,login_id,password)
+INSERT INTO master_staffs 
+(staff_name,login_id,password)
 VALUES ('佐藤','sato@email.com','12345678'),
        ('鈴木','suzuki@email.com','12349999'),
        ('加藤','kato@email.com','88888888')
