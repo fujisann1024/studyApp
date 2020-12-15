@@ -1,5 +1,5 @@
 <?php
-require_once("Common/Smarty.php");
+require_once("../Common/Smarty.php");
 
 $smarty = getSmarty();
 
