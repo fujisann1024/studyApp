@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    border-bottom: solid 1px black;
+}
+
+header > h1{
+    color: blue;
+}

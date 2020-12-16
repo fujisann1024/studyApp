@@ -1,4 +1,27 @@
-<!-- 文書型の定義を宣言する-->
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-12-16 15:37:23
+  from 'C:\Apache\Apache24\vhost\templates\login.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5fda29b359bff1_45177453',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2f9c9e21d2365a6320bc526468eed05b5db612c6' => 
+    array (
+      0 => 'C:\\Apache\\Apache24\\vhost\\templates\\login.tpl',
+      1 => 1608132798,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5fda29b359bff1_45177453 (Smarty_Internal_Template $_smarty_tpl) {
+?><!-- 文書型の定義を宣言する-->
 <!DOCTYPE html>
 <!-- htmlタグ ～ html文書だということを宣言-->
 <html>
@@ -26,12 +49,13 @@
 
     <!--ブラウザのツールバーに表示-->
     <title>ようこそ</title>
+     <link rel = "stylesheets" href = "css/base.css">
 </head>
 <!-- bodyタグ～ブラウザ上に表示される文書を記述-->
 <body>
     <div id = wrapper>
         <header>
-
+            <h1>TestApplication</h1>
         </header>
         <div id = "container">
             <form>
@@ -48,3 +72,5 @@
 </body>
 </html>
 
+<?php }
+}
