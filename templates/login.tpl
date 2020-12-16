@@ -38,10 +38,12 @@
             <form>
 
                 <label for = "loginId">ログインID(メールアドレス)</label><br>
-                <input id = "loginId" type = "text" name = "loginId" value = ""><br>
+                <input id = "loginId" type = "text" name = "loginId" value = "{$loginForm->loginId}"><br>
+                <div>{$loginForm->loginIdError}</div>
 
                 <label for = "password">パスワード</label><br>
-                <input id = "password" type = "password" name = "password" value = ""><br>
+                <input id = "password" type = "password" name = "password" value = "{$loginForm->loginIdError}"><br>
+                <div>{$loginForm->loginIdError}</div>
 
                 <input id = "btn" type = "submit" value = "ログイン">
             </form>
