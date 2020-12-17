@@ -17,7 +17,7 @@
     <!--キャッシュの制御と有効期限の指定-->
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
+    
     <!--文書の作者を表記-->
     <meta name = "auther" content="">
     <!--文書を作成したエディタを表記-->

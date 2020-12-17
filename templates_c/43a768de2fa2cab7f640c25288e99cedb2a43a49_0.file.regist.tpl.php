@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-12-16 16:39:20
+/* Smarty version 3.1.34-dev-7, created on 2020-12-17 16:06:32
   from 'C:\Apache\Apache24\vhost\templates\regist.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fda3838eb2f95_05017876',
+  'unifunc' => 'content_5fdb8208a94d41_34533069',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '43a768de2fa2cab7f640c25288e99cedb2a43a49' => 
     array (
       0 => 'C:\\Apache\\Apache24\\vhost\\templates\\regist.tpl',
-      1 => 1608136742,
+      1 => 1608221086,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fda3838eb2f95_05017876 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fdb8208a94d41_34533069 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,6 +60,12 @@ function content_5fda3838eb2f95_05017876 (Smarty_Internal_Template $_smarty_tpl)
 
                 <label for = "address">住所</label><br>
                 <input id = "address" type = "text" name = "address" value = ""><br>
+
+                <label for = "address">住所</label><br>
+                <input id = "address" type = "text" name = "address" value = ""><br>
+
+                <label for = "tellphone">電話番号</label><br>
+                <input id = "tellphone" type = "text" name = "tellphone" value = ""><br>
 
                 <label for = "loginId">ログインID(メールアドレス)</label><br>
                 <input id = "loginId" type = "text" name = "loginId" value = ""><br>

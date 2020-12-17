@@ -38,6 +38,12 @@
                 <label for = "address">住所</label><br>
                 <input id = "address" type = "text" name = "address" value = ""><br>
 
+                <label for = "address">住所</label><br>
+                <input id = "address" type = "text" name = "address" value = ""><br>
+
+                <label for = "tellphone">電話番号</label><br>
+                <input id = "tellphone" type = "text" name = "tellphone" value = ""><br>
+
                 <label for = "loginId">ログインID(メールアドレス)</label><br>
                 <input id = "loginId" type = "text" name = "loginId" value = ""><br>
 
