@@ -5,7 +5,7 @@ class LoginForm{
     public $password = "";
 
     public $loginIdError = "";
-    public $passwordErrorn = "";
+    public $passwordError = "";
  
 }
 ?>

@@ -45,3 +45,7 @@ VALUES ('佐藤',25,'男','大阪府','020-3454-6666','244-3333','sato@email.com
 ;
 
 SELECT * FROM master_staffs;
+
+INSERT INTO master_staffs 
+(staff_name,age,gender,address,tellphone,postal_code,login_id,password,miss_time)
+VALUES ('伊藤',25,'男','大阪府','020-3454-6666','244-3333','ito@email.com','1111','20201217 103000');

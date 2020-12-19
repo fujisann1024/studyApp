@@ -1,7 +1,7 @@
 <?php
 require_once("ConnectDAO.php");
 class LoginDAO{
-    public function getStaffDates(object $db,string $loginId){
+    public function getStaffDates(object $db,$loginId){
         try{
             //prepare～用意する
             //SQL文の準備

@@ -25,11 +25,11 @@ if(!isset($loginForm->loginId) || $loginForm->loginId === ""){
 }
 
 if(!isset($loginForm->password) || $loginForm->password === ""){
-    $loginForm->$passwordError = "パスワードを入力して下さい";
+    $loginForm->passwordError = "パスワードを入力して下さい";
 }
 
 if(empty($loginForm->passwordError)){
-    $loginDates = $loginDAO->getStaffDates($loginForm->loginId);
+    $loginDates = $loginDAO->getStaffDates($db,$loginForm->loginId);
 
     if(!$loginDates){
         $loginForm->passwordError = "ログインＩＤかパスワードが間違っています";
@@ -40,32 +40,82 @@ if(empty($loginForm->passwordError) && $loginDates["miss_flag"]){
     $loginForm->passwordError = "アカウントがロックされています";
 }
 
-if(empty($loginForm->passwordError) && $loginDates["password"] !== $loginForm->password){
-    
+//  直近のパスワード間違い時間から24時間以上経過していたらミス回数と間違い時間をリセットする
+$today = time();
+$missTime = strtotime($loginDates["miss_time"]);
+$diffTime = $today - $missTime;
+$diffHour = floor($diffTime / 60 / 60);
+
+if(empty($loginForm->passwordError) && $diffHour >= 24){
     try{
-        //ミス回数を1増やし、ミス時間を登録する
-        $pdo = $db->prepare(
+
+        $resetMiss = $db->prepare(
             "UPDATE master_staffs
-             SET miss_count = miss_count + 1,
-                 miss_time = :miss_time"
+             SET miss_count = :miss_count,
+                 miss_time = null
+             WHERE login_id = :login_id"
         );
         //トランザクション処理
         $db->beginTransaction();
         try{
-            $pdo->bindValue(":miss_time",date("Y-m-d H:i:d"),PDO::PARAM_STR);
-            $pdo->execute();
+            $resetMiss->bindValue(":miss_count",0,PDO::PARAM_INT);
+            $resetMiss->bindValue(":login_id",$loginForm->loginId,PDO::PARAM_STR);
+            $resetMiss->execute();
+            $db->commit();
+        }catch(PDOException $e){
+            $db->rollback();
+            throw $e;
+        }
+    }catch(PDOException $e){
+        $connectDAO->errorMsg($e);
+    }
+}
+
+if(empty($loginForm->passwordError) && $loginDates["password"] !== $loginForm->password){
+    
+    try{
+        //ミス回数を1増やし、ミス時間を登録する
+        $setMiss = $db->prepare(
+            "UPDATE master_staffs
+             SET miss_count = miss_count + 1,
+                 miss_time = :miss_time
+             WHERE login_id = :login_id"
+        );
+        //トランザクション処理
+        $db->beginTransaction();
+        try{
+            $setMiss->bindValue(":miss_time",date("Y-m-d H:i:d"),PDO::PARAM_STR);
+            $setMiss->bindValue(":login_id",$loginForm->loginId,PDO::PARAM_STR);
+            $setMiss->execute();
             $pdo->commit();
         }catch(PDOException $e){
             $pdo->rollback();
             throw $e;
         }
+        $loginForm->passwordError = "ログインＩＤかパスワードが間違っています";
+
+        if($loginDates["miss_count"] === 2){
+            $setMiss = $db->prepare(
+                "UPDATE master_staffs
+                 SET miss_flag = :miss_flag
+                 WHERE login_id = :login_id"
+            );
+            //トランザクション処理
+            $db->beginTransaction();
+            try{
+                $setMiss->bindValue(":miss_flag",TRUE);
+                $setMiss->bindValue(":login_id",$loginForm->loginId,PDO::PARAM_STR);
+                $setMiss->execute();
+                $pdo->commit();
+            }catch(PDOException $e){
+                $pdo->rollback();
+                throw $e;
+            }
+        }
     }catch(PDOException $e){
         $connectDAO->errorMsg($e);
-    }finally{
-        //データベースを切断する
-        $db = null;            
     }
-    $loginForm->passwordError = "ログインＩＤかパスワードが間違っています";
+    
     
 }
 
@@ -97,5 +147,7 @@ if(empty($loginForm->loginIdError) && empty($loginForm->passwordError)){
         //データベースを切断する
         $db = null;            
     }
-    
+    $smarty->display("check.tpl");
+}else{
+    $smarty->display("login.tpl");
 }

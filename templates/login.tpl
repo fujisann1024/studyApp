@@ -20,7 +20,7 @@
             <h1>TestApplication</h1>
         </header>
         <div id = "container">
-            <form>
+            <form action="../Controller/login.php" method="post">
 
                 <label for = "loginId">ログインID(メールアドレス)</label><br>
                 <input id = "loginId" type = "text" name = "loginId" value = "{$loginForm->loginId}"><br>
