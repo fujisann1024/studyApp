@@ -20,20 +20,8 @@
             <h1>TestApplication</h1>
         </header>
         <div id = "container">
-            <form>
 
-                <label for = "loginId">ログインID(メールアドレス)</label><br>
-                <input id = "loginId" type = "text" name = "loginId" value = "{$loginForm->loginId}"><br>
-                <div>{$loginForm->loginIdError}</div>
-
-                <label for = "password">パスワード</label><br>
-                <input id = "password" type = "password" name = "password" value = "{$loginForm->password}"><br>
-                <div>{$loginForm->passwordError}</div>
-
-                <input id = "btn" type = "submit" value = "ログイン">
-            </form>
         </div>
     </div>
 </body>
 </html>
-

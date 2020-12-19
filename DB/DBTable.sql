@@ -38,10 +38,10 @@ SELECT * FROM master_staffs;
 
 --テーブルの中身にデータを挿入
 INSERT INTO master_staffs 
-(staff_name,age,gender,address,login_id,password)
-VALUES ('佐藤',25,'男','大阪府','sato@email.com','12345678'),
-       ('鈴木',40,'女','東京都','suzuki@email.com','12349999'),
-       ('加藤',35,'女','名古屋県','kato@email.com','88888888')
+(staff_name,age,gender,address,tellphone,postal_code,login_id,password)
+VALUES ('佐藤',25,'男','大阪府','020-3454-6666','244-3333','sato@email.com','12345678'),
+       ('鈴木',40,'女','東京都','020-9000-5553','244-2143','suzuki@email.com','12349999'),
+       ('加藤',35,'女','名古屋県','020-2542-6789','244-6666','kato@email.com','88888888')
 ;
 
 SELECT * FROM master_staffs;
