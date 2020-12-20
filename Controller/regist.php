@@ -92,5 +92,8 @@ if(empty($registForm->addressError) && !$registForm->address >= 100 ){
 
 //指定の形式で入力されているか
 
+if(empty($registForm->addressError) && !$registForm->address >= 100 ){
+    $registForm->staffNameError = "正しく住所を入力して下さい";
+}
 
 $smarty->display("regist.tpl");
