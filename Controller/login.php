@@ -153,7 +153,7 @@ if(empty($loginForm->loginIdError) && empty($loginForm->passwordError)){
         //データベースを切断する
         $db = null;            
     }
-    $smarty->display("check.tpl");
+    $smarty->display("main.tpl");
 }else{
     $db = null;
     $smarty->display("login.tpl");
