@@ -1,13 +1,13 @@
 <?php
 require_once("../Common/Smarty.php");
 require_once("../Form/LoginForm.php");
-require_once("../DAO/LoginDAO.php");
+require_once("../DAO/MasterStaffsDAO.php");
 require_once("../DAO/ConnectDAO.php");
 
 $smarty = getSmarty();              //Smartyインスタンスを取得
 
 $loginForm = new LoginForm();       //フォームインスタンスを生成
-$loginDAO = new LoginDAO();         //DAOインスタンスを生成
+$masterStaffsDAO = new MasterStaffsDAO();         //DAOインスタンスを生成
 $connectDAO = new ConnectDAO();
 
 $db = $connectDAO->getDB();         //PDOインスタンスを獲得
@@ -29,7 +29,7 @@ if(!isset($loginForm->password) || $loginForm->password === ""){
 }
 
 if(empty($loginForm->passwordError)){
-    $loginDates = $loginDAO->getStaffDates($db,$loginForm->loginId);
+    $loginDates = $masterStaffsDAO->getStaffDates($db,$loginForm->loginId);
 
     if(!$loginDates){
         $loginForm->passwordError = "ログインＩＤかパスワードが間違っています";
@@ -41,10 +41,14 @@ if(empty($loginForm->passwordError) && $loginDates["miss_flag"]){
 }
 
 //  直近のパスワード間違い時間から24時間以上経過していたらミス回数と間違い時間をリセットする
-$today = time();
-$missTime = strtotime($loginDates["miss_time"]);
-$diffTime = $today - $missTime;
-$diffHour = floor($diffTime / 60 / 60);
+$diffHour = 0; //時間差を宣言
+if(isset($loginDates["miss_time"])){
+    $today = time();
+    $missTime = strtotime($loginDates["miss_time"]);
+    $diffTime = $today - $missTime;
+    $diffHour = floor($diffTime / 60 / 60);
+}
+
 
 if(empty($loginForm->passwordError) && $diffHour >= 24){
     try{
@@ -87,15 +91,16 @@ if(empty($loginForm->passwordError) && $loginDates["password"] !== $loginForm->p
             $setMiss->bindValue(":miss_time",date("Y-m-d H:i:d"),PDO::PARAM_STR);
             $setMiss->bindValue(":login_id",$loginForm->loginId,PDO::PARAM_STR);
             $setMiss->execute();
-            $pdo->commit();
+            $db->commit();
         }catch(PDOException $e){
-            $pdo->rollback();
+            $db->rollback();
             throw $e;
         }
         $loginForm->passwordError = "ログインＩＤかパスワードが間違っています";
-
+        
+        //ミス回数が2回になってたらミスフラグを有効にする
         if($loginDates["miss_count"] === 2){
-            $setMiss = $db->prepare(
+            $setAccountRock = $db->prepare(
                 "UPDATE master_staffs
                  SET miss_flag = :miss_flag
                  WHERE login_id = :login_id"
@@ -103,14 +108,15 @@ if(empty($loginForm->passwordError) && $loginDates["password"] !== $loginForm->p
             //トランザクション処理
             $db->beginTransaction();
             try{
-                $setMiss->bindValue(":miss_flag",TRUE);
-                $setMiss->bindValue(":login_id",$loginForm->loginId,PDO::PARAM_STR);
-                $setMiss->execute();
-                $pdo->commit();
+                $setAccountRock->bindValue(":miss_flag",TRUE);
+                $setAccountRock->bindValue(":login_id",$loginForm->loginId,PDO::PARAM_STR);
+                $setAccountRock->execute();
+                $db->commit();
             }catch(PDOException $e){
-                $pdo->rollback();
+                $db->rollback();
                 throw $e;
             }
+            $loginForm->passwordError = "アカウントをロックしました";
         }
     }catch(PDOException $e){
         $connectDAO->errorMsg($e);
@@ -122,23 +128,23 @@ if(empty($loginForm->passwordError) && $loginDates["password"] !== $loginForm->p
 //エラーチェックをすべて通過したら
 if(empty($loginForm->loginIdError) && empty($loginForm->passwordError)){
     try{
-        $db = $connectDAO->getDB();
 
-        $pdo = $db->prepare(
+        $setLogin = $db->prepare(
             "UPDATE master_staffs
              SET miss_count = :miss_count,
                  miss_time = null,
-                 login_time = :login_time"
+                 login_time = :login_time
+             WHERE login_id = :login_id"
         );
         //トランザクション処理
         $db->beginTransaction();
         try{
-            $pdo->bindValue(":miss_count",0,PDO::PARAM_INT);
-            $pdo->bindValue(":login_time",date("Y-m-d H:i:d"),PDO::PARAM_STR);
-            $pdo->execute();
-            $pdo->commit();
+            $setLogin->bindValue(":miss_count",0,PDO::PARAM_INT);
+            $setLogin->bindValue(":login_time",date("Y-m-d H:i:d"),PDO::PARAM_STR);
+            $setLogin->execute();
+            $db->commit();
         }catch(PDOException $e){
-            $pdo->rollback();
+            $db->rollback();
             throw $e;
         }
     }catch(PDOException $e){
@@ -149,5 +155,6 @@ if(empty($loginForm->loginIdError) && empty($loginForm->passwordError)){
     }
     $smarty->display("check.tpl");
 }else{
+    $db = null;
     $smarty->display("login.tpl");
 }

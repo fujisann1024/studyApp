@@ -8,6 +8,7 @@ class RegistForm{
     public  $postalCode = "";
     public  $loginId = "";
     public  $password = "";
+    public  $confilmPassword = "";
 
     //エラーメッセージ
     public  $staffNameError = "";
@@ -18,6 +19,7 @@ class RegistForm{
     public  $postalCodeError = "";
     public  $loginIdError = "";
     public  $passwordError = "";
+    public  $confilmPasswordError = "";
 
 }
 

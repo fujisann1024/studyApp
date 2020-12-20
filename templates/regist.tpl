@@ -59,8 +59,8 @@
                 <div class = "error">{$registForm->passwordError}</div>
 
                 <label for = "confilm_password">パスワード(確認)</label><br>
-                <input id = "confilm_password" type = "password" name = "password" value = ""><br>
-                <div class = "error">{$registForm->passwordError}</div>
+                <input id = "confilm_password" type = "password" name = "password" value = "{$registForm->confilmPassword}"><br>
+                <div class = "error">{$registForm->confilmPasswordError}</div>
                 
                 <input id = "btn" type = "submit" value = "確認">
             </form>

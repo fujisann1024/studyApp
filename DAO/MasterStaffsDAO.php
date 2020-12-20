@@ -1,6 +1,6 @@
 <?php
 require_once("ConnectDAO.php");
-class LoginDAO{
+class MasterStaffsDAO{
     public function getStaffDates(object $db,$loginId){
         try{
             //prepare～用意する
@@ -32,12 +32,40 @@ class LoginDAO{
         return $loginDates;
     }
 
+    public function getLoginDates(object $db, $loginId){
+        try{
+            $pdo = $db->prepare(
+            "SELECT staff_id, staff_name
+             FROM master_staffs
+             WHERE login_id = :login_id
+            ");
+
+            $pdo->bindValue(":login_id",$loginId);
+
+            $pdo->execute();
+
+            $loginDates = $pdo->fetch(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            $db->errorMsg($e);
+        }finally{
+            $db = null;            
+        }
+        return $loginDates;
+    }
+
 }
+
+
 
 // $connectDAO = new ConnectDAO();
 // $db = $connectDAO->getDB();
 // var_dump($db);
-// $loginDAO = new LoginDAO();
-// $loginDates = $loginDAO->getStaffDates($db,"kato@email.com");
+// print "\n";
+// $masterStaffsDAO = new MasterStaffsDAO();
+// $loginDates = $masterStaffsDAO->getStaffDates($db,"kato@email.com");
 // var_dump($loginDates);
+// print "\n";
+// $loginDates2 = $masterStaffsDAO->getLoginDates($db,"kato@email.com");
+// var_dump($loginDates2);
+
 ?>
