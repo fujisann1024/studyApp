@@ -1,0 +1,33 @@
+@charset "UTF-8";
+*,*:before,*:after{
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    /*box-sizing　～　要素の幅と高さの中にpaddingとborderを含めるかどうか*/
+    /*inherit ~ 親要素のborder-boxの値を引き継ぐ*/
+}
+
+html{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 62.5%; /*rem算出をしやすくするため*/
+    /*border-box~paddingとborderを幅と高さに含める*/
+}
+
+button{
+    font-size: 1.6rem;     /*文字の大きさ*/
+    font-weight: 700;      /*文字の太さ*/
+    line-height: 1.5;      /*行の高さ*/
+    position: relative;    /*ボックスの配置方法*/
+    /*relative～相対位置*/
+    display: inline-block; /*要素の表示形式*/
+    padding: 1rem 4rem;    /*領域内のスペース*/
+    cursor: pointer;       /*カーソルの形状*/
+    user-select: none;     /*ユーザーが文章を範囲選択できるか*/
+    transition: all 0.3s;  /*時間的変化*/
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;  /**/
+}
