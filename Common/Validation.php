@@ -21,31 +21,28 @@ class Validation{
 
     //電話番号以外の形式の場合、falseを返す
     public function isPhoneNumber($formDate) {
-        if (!preg_match("/^[0-9-]{6,9}$|^[0-9-]{13}$/", $formDate)) {
+        if (preg_match("/^[0-9-]{6,9}$|^[0-9-]{13}$/", $formDate)) {
             # 電話番号以外の形式の場合、falseを返す
-            return false;
+            return true;
         }
-        return true;
     }
 
     //郵便番号以外の形式の場合、falseを返す
     public function isPostCode($formDate) {
-        if (!preg_match("/^[0-9]{3}-[0-9]{4}$/", $formDate)) {
+        if (preg_match("/^[0-9]{3}-[0-9]{4}$/", $formDate)) {
             
-            return false;
+            return true;
         }
-        return true;
     }
 
     //メールアドレスのフォーマットならtrueを返す
     public function isMailAddress($formDate) {
         # First, we check that there's one @ symbol, and that the lengths are right
-        if (!preg_match("/^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/",
+        if (preg_match("/^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/",
             $formDate)) {
            
-            return false;
+            return true;
         }
-        return true;
     }
 }
 

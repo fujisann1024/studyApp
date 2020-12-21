@@ -86,14 +86,60 @@ if(empty($registForm->ageError) && 120 < $registForm->age){
         $registForm->ageError = "正しく年齢を入力して下さい";
 }
 
-if(empty($registForm->addressError) && !$registForm->address >= 100 ){
+if(empty($registForm->addressError) && $registForm->address >= 100 ){
     $registForm->staffNameError = "正しく住所を入力して下さい";
 }
 
-//指定の形式で入力されているか
 
-if(empty($registForm->addressError) && !$registForm->address >= 100 ){
-    $registForm->staffNameError = "正しく住所を入力して下さい";
+if(empty($registForm->passwordError) && $registForm->password <= 8 ){
+    $registForm->passwordError = "パスワードは8文字以上で入力して下さい";
 }
 
-$smarty->display("regist.tpl");
+if(empty($registForm->passwordError) && $registForm->password > 255 ){
+    $registForm->passwordError = "パスワードが長すぎます";
+}
+
+//指定のフォーマットで入力されているか
+
+if(empty($registForm->tellphneError) && !$validation->isPhoneNumber($registForm->tellphone) ){
+    $registForm->tellphoneError = "指定のフォーマットで入力して下さい";
+}
+
+if(empty($registForm->postalCodeError) && !$validation->isPostCode($registForm->postalCode) ){
+    $registForm->postalCodeError = "指定のフォーマットで入力して下さい";
+}
+
+if(empty($registForm->loginIdError) && !$validation->isMailAddress($registForm->loginId) ){
+    $registForm->loginIdError = "指定のフォーマットで入力して下さい";
+}
+
+//パスワードと確認用のパスワードが一致しているか
+
+if(empty($registForm->passwordError) && !($registForm->password === $registForm->confilmPassword) ){
+    $registForm->confilmPasswordError = "確認用のパスワードと不一致です";
+}
+
+$db = $connectDAO->getDB();
+
+//データベースからlogin_idをキーにしてログインＩＤと名前を取りだす
+$getInfo = $masterStaffsDAO->getLoginDates($db,$registForm->loginId);
+
+if(empty($registForm->loginIdError) && !$getInfo){
+    $loginIdError = "こちらのログインＩＤは既に使われております";
+}
+
+if(empty($registForm->staffNameError) &&
+   empty($registForm->ageError) &&
+   empty($registForm->genderError) &&
+   empty($registForm->addressError) &&
+   empty($registForm->tellphoneError) &&
+   empty($registForm->postalCodeError) &&
+   empty($registForm->loginIdError) &&
+   empty($registForm->passwordError) &&
+   empty($registForm->confilmPasswordError)
+   ){
+    $smarty->display("check.tpl");
+}else{
+    $smarty->display("regist.tpl");
+}
+
