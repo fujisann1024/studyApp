@@ -9,11 +9,44 @@
         <meta name="viewport" content="width=device-width,user-scalable=0">
         <title>UI</title>
         <link rel="stylesheet" href="btn.css">
+        <style>
+            .btn--orange,a.btn--orange{
+                color: #fff;
+                background-color: #eb6100;
+            }
+            
+            .btn--orange:hover,a.btn--orange:hover{
+                color:#fff;
+                background-color: #f56500;
+            }
+
+            .fa-position-left {
+                position: absolute;
+                top: calc(50% - .5em);
+                left: 1rem;
+            }
+
+            .btn--radius,
+            a.btn--radius,
+            button.btn--radius{
+                border-radius: 100vh;
+            }
+
+
+
+        </style>
 </head>
 <body>
     <div id = "wrapper">
         <!--ボタン-->
-        <button>テスト</button>
+        <!-- <button>テスト</button> -->
+
+        <a href = "" class = "btn btn--orange">
+            <i class = "fas fa-phone-alt fa-position-left"></i>
+            お電話はこちら<br>
+            0120-123-456
+        </a>
+        <i class="fas fa-phone-alt"></i>
     </div>
 
 </body>
