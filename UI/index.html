@@ -9,44 +9,59 @@
         <meta name="viewport" content="width=device-width,user-scalable=0">
         <title>UI</title>
         <link rel="stylesheet" href="btn.css">
+        <link rel="stylesheet" href="table.css">
         <style>
-            .btn--orange,a.btn--orange{
-                color: #fff;
-                background-color: #eb6100;
-            }
-            
-            .btn--orange:hover,a.btn--orange:hover{
-                color:#fff;
-                background-color: #f56500;
-            }
-
-            .fa-position-left {
-                position: absolute;
-                top: calc(50% - .5em);
-                left: 1rem;
-            }
-
-            .btn--radius,
-            a.btn--radius,
-            button.btn--radius{
-                border-radius: 100vh;
-            }
-
-
 
         </style>
 </head>
 <body>
     <div id = "wrapper">
-        <!--ボタン-->
-        <!-- <button>テスト</button> -->
+        <!--参考サイト　https://xn--eck9awc8j.biz/css-table-design/
+                       https://qiita.com/KengoShimizu/items/22c14b282fa9f53f4bd8  -->
+        <header>
+            <nav>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article>
+                <section>
+                    <table>
+                        <caption>管理者一覧</caption>
+                         <tr>
+                             <th scope="col">氏名</th><th scope="col">年齢</th><th scope="col">出身地</th><th scope="col">メールアドレス</th>
+                         </tr>
+                         <tr>
+                             <td>佐藤</td><td>25</td><td>大阪</td><td>gmail.com</td>
+                         </tr>     
+                         <tr>
+                             <td>鈴木</td><td>30</td><td>東京</td><td>email.com</td>
+                         </tr>
+                         <tr>
+                             <td>高橋</td><td>27</td><td>名古屋</td><td>yahoo.com</td>
+                         </tr>
+                         <tr>
+                             <td>田中</td><td>40</td><td>福岡</td><td>japan.com</td>
+                         </tr>
+             
+                    </table>
+                </section>
+                <section>
+                    
+                </section>
+                <section>
+                    
+                </section>
+            </article>
 
-        <a href = "" class = "btn btn--orange">
-            <i class = "fas fa-phone-alt fa-position-left"></i>
-            お電話はこちら<br>
-            0120-123-456
-        </a>
-        <i class="fas fa-phone-alt"></i>
+        </main>
+        <footer>]
+
+        </footer>
     </div>
 
 </body>
