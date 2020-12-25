@@ -19,6 +19,7 @@
                                     isset() ~ 内側を正方形に元の大きさの50％切り取る*/
         }
 
+        /*基本的なボタンのスタイル*/
         .c-button{
             position: relative;
             display: inline-block;
@@ -31,6 +32,7 @@
             cursor: pointer;               /*カーソルのマークをポインターにする*/
         }
 
+        /*ハンバーガーボタン固有のスタイル*/
         .p-hamburger{
             /*position:absolute; 中央よりになる*/
             position: relative;
@@ -58,6 +60,46 @@
         .p-hamburger:focus{
             box-shadow: 0 0 5rem rgb(163, 24, 163);
         }
+
+        /*お肉*/
+        #p-hamburger__line{
+            position: absolute; /*親がrelativeなので親からの絶対位置*/
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 18px;
+            height: 2px;
+            background-color: aqua;
+            -webkit-transition: inherit;
+                    transition: inherit; /*親要素のプロパティの値を使用する*/
+        }
+
+        /*バンズ*/
+        #p-hamburger__line::before,
+        #p-hamburger__line::after{
+            content: ''; /*疑似要素に空文字を挿入する*/
+            position: absolute;
+            display: block; /*横並び*/
+            width: 100%;
+            height: 100%;  /*親要素に合わせる*/
+            background-color: aqua;
+            -webkit-transition: inherit;
+                    transition: inherit; /*親要素のプロパティの値を使用する*/
+        }
+
+        /*バンズとの幅を開ける*/
+        #p-hamburger__line::before{
+            top: -5px;
+        }
+        #p-hamburger__line::after{
+            top: 5px;
+        }
+
+        /*フォーカスして「×」マークになる*/
+
+        /**/
     </style>
 </head>
 <body>
