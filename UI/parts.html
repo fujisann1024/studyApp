@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*display:none;を使わずにテキストを非表示にする～音声ソフトに読み込ませるため*/
+        #u-visually-hidden{
+            position: relative;  /*親要素からの相対位置*/
+            white-space: nowrap; /*ホワイトスペースは詰めるが行の折り返しは行わない*/
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            border: 0;
+            padding: 0;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);/*指定したリッピング領域の外側が非表示
+                                    isset() ~ 内側を正方形に元の大きさの50％切り取る*/
+        }
+
+        .c-button{
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            -webkit-appearance: none;
+               -moz-appearance: none;
+                    appearance: none; /*デフォルトスタイルをnoneにする*/
+            border: none;
+            background-color: transparent; /*隠す*/
+            cursor: pointer;               /*カーソルのマークをポインターにする*/
+        }
+
+        .p-hamburger{
+            /*position:absolute; 中央よりになる*/
+            position: relative;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 48px;
+            height: 48px;
+            margin: auto;
+            border-radius: 50%; /*これを適用しないと円になる*/
+            border: 1px solid #9d8aea;
+            box-shadow: 0 0 2rem transparent; /*影を隠す*/
+            outline: none; /*1フォーカス時の青枠を消す
+                             フォーカスに当たっているかわからないので基本的には使わない*/
+            /*transition 第一引数 ~ transitiionの対象のCSSプロパティ allなら全部
+                         第二引数 ~ 変化の時間
+                         第三引数 ~ 変化の仕方*/
+            -webkit-transition: all .3s ease-in-out;
+                    transition: all .3s ease-in-out;
+        }
+
+        /*outline:none;下部分を影で表現する*/
+        .p-hamburger:hover,
+        .p-hamburger:focus{
+            box-shadow: 0 0 5rem rgb(163, 24, 163);
+        }
+    </style>
+</head>
+<body>
+    <form>
+
+        <header>
+            <!--　アクセシビリティ
+            role属性～コンテンツの役割を正確にブラウザに伝える
+            area属性～状態や性質などの詳細な情報の付与、音声ソフトに認識させるため-->
+            <!--命名規則(FROCSS)
+                c ~ 一般的なパターン
+                p ~ 固有のパターン
+                u ~ CとPの調整役
+            -->
+            <!-- aria-controls ~ コントロールする対象となる要素を指定する属性
+                 aria-expanded ~ 現在表示されているかされていないかを指定する属性-->
+            <button type = "button" id = "js-buttonHamburger" class = "c-button p-hamburger"
+                     aria-controls="global-nav" aria-expanded="false">
+                <span id = "p-hamburger__line">
+                    <span id = "u-visually-hidden">
+                        メニューを開閉する
+                    </span>
+                </span>
+
+            </button>
+        </header>
+        <main>
+            <article>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+            </article>
+        </main>
+        <footer>
+
+        </footer>
+    </form>
+    
+</body>
+</html>
