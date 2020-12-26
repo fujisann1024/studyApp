@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src = "../jquery/jquery-3.5.1.min.js"></script>
     <style>
         /*display:none;を使わずにテキストを非表示にする～音声ソフトに読み込ませるため*/
         #u-visually-hidden{
@@ -92,15 +93,79 @@
         /*バンズとの幅を開ける*/
         #p-hamburger__line::before{
             top: -5px;
+
         }
         #p-hamburger__line::after{
             top: 5px;
         }
 
+        /* .p-drawer{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            transform: translateX(100%);
+            -webkit-transition: transform .3s ease-in-out;
+                    transition: transform .3s ease-in-out;
+        }
+
+        .is-drawerActive .p-drawer{
+            transform :translateX(0);
+        } */
+
         /*フォーカスして「×」マークになる*/
 
-        /**/
+        /*お肉を隠す*/
+        .p-hamburger[aria-expanded="true"] #p-hamburger__line{
+            background-color: transparent;
+        }
+        
+        /*バンズを重ね合わせる*/
+        .p-hamburger[aria-expanded="true"] #p-hamburger__line::before,
+        .p-hamburger[aria-expanded="true"] #p-hamburger__line::after{
+            top: 0;
+            background-color: aqua;
+        }
+
+        /*上のバンズを「\」に傾ける*/
+        .p-hamburger[aria-expanded="true"] #p-hamburger__line::before{
+            
+            /*transform～要素の変形を指定できる
+              rotate() ～要素の回転を指定
+              deg～角度
+              + 時計回り、-　反時計回り*/
+            -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
+        }
+        
+        /*下のバンズを「/」に傾ける*/
+        .p-hamburger[aria-expanded="true"] #p-hamburger__line::after{
+            
+            -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+        }
     </style>
+    <script>
+        $(function(){
+            //クリックしたときにaria-expandedの属性を切り替える
+            $('#js-buttonHamburger').click(function(){
+                //要素に指定のクラスを持っていれば削除、持っていなければ付与
+                $('body').toggleClass('is-drawerActive');
+
+            if ($(this).attr('aria-expanded') == 'false') {
+                $(this).attr('aria-expanded', true);
+            } else {
+            $(this).attr('aria-expanded', false);
+            }
+     });
+        });
+    </script>
 </head>
 <body>
     <form>
@@ -125,6 +190,12 @@
                 </span>
 
             </button>
+
+            <nav>
+                <div id = "drawer" class = "p-drawer">
+                    
+                </div>
+            </nav>
         </header>
         <main>
             <article>
