@@ -1,0 +1,71 @@
+@charset "UTF-8";
+/*値を変数に格納できる*/
+#btn-list {
+  text-align: center;
+  /*cssと違ってネストできる*/
+}
+
+#btn-list .btn {
+  background-color: white;
+  /*背景色*/
+  color: blue;
+  /*文字色*/
+  font-weight: 600;
+  /*文字の太さ*/
+  /*ボックス構造*/
+  border: 1px solid black;
+  /*枠線*/
+  padding: 10px 20px;
+  /*枠線と文字との余白*/
+  margin: 10px 5px 10px 5px;
+  /*要素同士の余白*/
+  cursor: pointer;
+  /*ホバーしたときのカーソルの種類*/
+}
+
+#btn-list .btn1 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  /*変化の指定
+                                第一引数 適用するプロパティ(すべてならall)
+                                第二引数 変化の時間*/
+  /*「&」は接続する必要がある場合は省略できない*/
+}
+
+#btn-list .btn1:hover {
+  background-color: red;
+  color: white;
+}
+
+#btn-list .btn2 {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  /*第三引数　変化の仕方*/
+}
+
+#btn-list .btn2:hover {
+  background-color: red;
+  color: white;
+}
+
+#btn-list .btn3 {
+  -webkit-transition: all 1s ease 3s;
+  transition: all 1s ease 3s;
+  /*第四引数 遅延時間*/
+}
+
+#btn-list .btn3:hover {
+  background-color: red;
+  color: white;
+}
+
+#btn-list .btn4 {
+  -webkit-transition: color 1s ease, background-color 0.3s ease;
+  transition: color 1s ease, background-color 0.3s ease;
+}
+
+#btn-list .btn4:hover {
+  background-color: red;
+  color: white;
+}
+/*# sourceMappingURL=btn.css.map */

@@ -4,154 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/hamburger.css">
+    <!--スライダープラグイン ~ css-->
+
     <script src = "../jquery/jquery-3.5.1.min.js"></script>
-    <style>
-        /*display:none;を使わずにテキストを非表示にする～音声ソフトに読み込ませるため*/
-        #u-visually-hidden{
-            position: relative;  /*親要素からの相対位置*/
-            white-space: nowrap; /*ホワイトスペースは詰めるが行の折り返しは行わない*/
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            border: 0;
-            padding: 0;
-            clip: rect(0 0 0 0);
-            clip-path: inset(50%);/*指定したリッピング領域の外側が非表示
-                                    isset() ~ 内側を正方形に元の大きさの50％切り取る*/
-        }
-
-        /*基本的なボタンのスタイル*/
-        .c-button{
-            position: relative;
-            display: inline-block;
-            text-decoration: none;
-            -webkit-appearance: none;
-               -moz-appearance: none;
-                    appearance: none; /*デフォルトスタイルをnoneにする*/
-            border: none;
-            background-color: transparent; /*隠す*/
-            cursor: pointer;               /*カーソルのマークをポインターにする*/
-        }
-
-        /*ハンバーガーボタン固有のスタイル*/
-        .p-hamburger{
-            /*position:absolute; 中央よりになる*/
-            position: relative;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 48px;
-            height: 48px;
-            margin: auto;
-            border-radius: 50%; /*これを適用しないと円になる*/
-            border: 1px solid #9d8aea;
-            box-shadow: 0 0 2rem transparent; /*影を隠す*/
-            outline: none; /*1フォーカス時の青枠を消す
-                             フォーカスに当たっているかわからないので基本的には使わない*/
-            /*transition 第一引数 ~ transitiionの対象のCSSプロパティ allなら全部
-                         第二引数 ~ 変化の時間
-                         第三引数 ~ 変化の仕方*/
-            -webkit-transition: all .3s ease-in-out;
-                    transition: all .3s ease-in-out;
-        }
-
-        /*outline:none;下部分を影で表現する*/
-        .p-hamburger:hover,
-        .p-hamburger:focus{
-            box-shadow: 0 0 5rem rgb(163, 24, 163);
-        }
-
-        /*お肉*/
-        #p-hamburger__line{
-            position: absolute; /*親がrelativeなので親からの絶対位置*/
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 18px;
-            height: 2px;
-            background-color: aqua;
-            -webkit-transition: inherit;
-                    transition: inherit; /*親要素のプロパティの値を使用する*/
-        }
-
-        /*バンズ*/
-        #p-hamburger__line::before,
-        #p-hamburger__line::after{
-            content: ''; /*疑似要素に空文字を挿入する*/
-            position: absolute;
-            display: block; /*横並び*/
-            width: 100%;
-            height: 100%;  /*親要素に合わせる*/
-            background-color: aqua;
-            -webkit-transition: inherit;
-                    transition: inherit; /*親要素のプロパティの値を使用する*/
-        }
-
-        /*バンズとの幅を開ける*/
-        #p-hamburger__line::before{
-            top: -5px;
-
-        }
-        #p-hamburger__line::after{
-            top: 5px;
-        }
-
-        /* .p-drawer{
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            transform: translateX(100%);
-            -webkit-transition: transform .3s ease-in-out;
-                    transition: transform .3s ease-in-out;
-        }
-
-        .is-drawerActive .p-drawer{
-            transform :translateX(0);
-        } */
-
-        /*フォーカスして「×」マークになる*/
-
-        /*お肉を隠す*/
-        .p-hamburger[aria-expanded="true"] #p-hamburger__line{
-            background-color: transparent;
-        }
-        
-        /*バンズを重ね合わせる*/
-        .p-hamburger[aria-expanded="true"] #p-hamburger__line::before,
-        .p-hamburger[aria-expanded="true"] #p-hamburger__line::after{
-            top: 0;
-            background-color: aqua;
-        }
-
-        /*上のバンズを「\」に傾ける*/
-        .p-hamburger[aria-expanded="true"] #p-hamburger__line::before{
-            
-            /*transform～要素の変形を指定できる
-              rotate() ～要素の回転を指定
-              deg～角度
-              + 時計回り、-　反時計回り*/
-            -webkit-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                    transform: rotate(45deg);
-        }
-        
-        /*下のバンズを「/」に傾ける*/
-        .p-hamburger[aria-expanded="true"] #p-hamburger__line::after{
-            
-            -webkit-transform: rotate(-45deg);
-                -ms-transform: rotate(-45deg);
-                    transform: rotate(-45deg);
-        }
-    </style>
-    <script>
+    <!--スライダープラグイン ~ javascript-->
+   
+ <script>
         $(function(){
             //クリックしたときにaria-expandedの属性を切り替える
             $('#js-buttonHamburger').click(function(){
@@ -199,7 +58,18 @@
         </header>
         <main>
             <article>
-                <section></section>
+                <!--　スライダー-->
+                <section>
+                    <div>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </section>
                 <section></section>
                 <section></section>
                 <section></section>

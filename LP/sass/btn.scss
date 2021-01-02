@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+/*値を変数に格納できる*/
+$cWhite: white;
+$cBlack: black;
+$cBlue: blue;
+$cRed: red;
+
+#btn-list{
+    text-align: center;
+
+    /*cssと違ってネストできる*/
+    .btn{
+        background-color: $cWhite;  /*背景色*/
+        color: $cBlue;              /*文字色*/
+        font-weight: 600;           /*文字の太さ*/
+        /*ボックス構造*/
+        border: 1px solid $cBlack;  /*枠線*/
+        padding: 10px 20px;         /*枠線と文字との余白*/
+        margin: 10px 5px 10px 5px;  /*要素同士の余白*/
+
+        cursor: pointer;            /*ホバーしたときのカーソルの種類*/
+    }
+
+    .btn1{
+        transition: all 0.3s; /*変化の指定
+                                第一引数 適用するプロパティ(すべてならall)
+                                第二引数 変化の時間*/
+        /*「&」は接続する必要がある場合は省略できない*/
+        &:hover{
+            background-color: $cRed;
+            color:$cWhite;
+        }
+    }
+    .btn2{
+        transition: all 1s ease; /*第三引数　変化の仕方*/
+        &:hover{
+            background-color: $cRed;
+            color:$cWhite;
+        }
+    }
+    .btn3{
+        transition: all 1s ease 3s; /*第四引数 遅延時間*/
+        &:hover{
+            background-color: $cRed;
+            color:$cWhite;
+        }
+    }
+    .btn4{
+        transition: color 1s ease,
+                    background-color 0.3s ease;
+        &:hover{
+            background-color: $cRed;
+            color:$cWhite;
+        }
+    }
+}
