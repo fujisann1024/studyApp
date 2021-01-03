@@ -15,7 +15,49 @@ $cBlack: black;
         /*アニメーションを行う*/
         animation: sk-bouncedelay 1.4s infinite;/*keyflamesの処理を
                                                   1.4秒の間隔で無限にアニメーションを行う*/
+        &.bounce1{
+            animation-delay: -0.32s;
+        }
+        &.bounce2{
+            animation-delay: -0.16s;
+        }
+       
+
     }
+}
+
+/*for文,疑似セレクタを使った場合*/
+.three-dot-spiner2 {
+    text-align: center;
+
+    & div{
+        /*3つの黒丸を横並びに表示*/
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: $cBlack;
+        border-radius: 50%;
+        animation: sk-bouncedelay 1.4s infinite;
+
+        //for 変数 from 1 to 3 = 1から2まで繰り返す
+        @for $i from 1 through 2{
+            //インターポレーション#{}～セレクタ内で変数を使用する場合
+            &:nth-child(#{$i}){
+                animation-delay: -0.32s / $i;  //単位を含めたまま演算できる
+                //インターポレーションの使用例
+                    //background-image: url("../image/test#{$i}.jpeg");
+            }
+        }
+        /*疑似要素*/
+        // &:nth-child(1){
+        //     animation-delay: -0.32s;
+        // }
+        // &:nth-child(2){
+        //     animation-delay: -0.16s;
+        // }
+    }
+
+
 }
 
 @keyframes sk-bouncedelay{

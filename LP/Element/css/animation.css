@@ -1,0 +1,69 @@
+@charset "UTF-8";
+#container {
+  text-align: center;
+}
+
+/*関数みたいなもの*/
+.square {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  /*引数に値を入れる*/
+  -webkit-animation-name: sk-repeat;
+          animation-name: sk-repeat;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-iteration-count: 3;
+          animation-iteration-count: 3;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  /*animationプロパティについて*/
+  /*animationの変化の周期*/
+  /*animationの変化の仕方*/
+  /*実行するまでの時間*/
+  /*animationを行う回数　infiniteだと無限*/
+  /*reverse～アニメーションの処理を100％から始める
+                         alternate～アニメーションの処理を0→100→0・・・と折り返して繰り返す
+                         alternate-reverse～アニメーションの処理を100→0→100・・・と折り返して繰り返す*/
+  /*アニメーションが終了したときのスタイルを維持*/
+}
+
+@-webkit-keyframes sk-repeat {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    background-color: #a5ff1d;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #75af1e;
+  }
+}
+
+@keyframes sk-repeat {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    background-color: #a5ff1d;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #75af1e;
+  }
+}
+/*# sourceMappingURL=animation.css.map */

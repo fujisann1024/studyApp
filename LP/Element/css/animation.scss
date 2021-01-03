@@ -1,0 +1,74 @@
+$cYellow: yellow;
+
+#container{
+    text-align: center;
+}
+
+/*関数みたいなもの*/
+@mixin animation (
+    /*引数*/
+    $name,
+    $duration: 3s,
+    $timing-function: ease,
+    $delay: 0,
+    $iteration-count: 3,
+    $direction: normal
+) {
+    // animation-name: $name;
+    // animation-duration: $duration;
+    //ケバブケースで書かれたプロパティは波カッコで省略できる
+    animation: {
+        name: $name;
+        duration: $duration;
+        timing-function: $timing-function;
+        delay: $delay;
+        iteration-count: $iteration-count;
+        direction: $direction;
+    }
+}
+
+.square{
+    
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: $cYellow;
+
+    /*引数に値を入れる*/
+    @include animation(
+        $name: sk-repeat,
+    );
+
+    /*animationプロパティについて*/
+    /*animationの変化の周期*/
+        //animation: sk-repeat 0.4s;
+    /*animationの変化の仕方*/
+        //animation-timing-function: ease;
+    /*実行するまでの時間*/
+        //animation-delay: 1s;
+    /*animationを行う回数　infiniteだと無限*/
+        //animation-iteration-count: 3;
+
+        //animation: reverse;
+    /*reverse～アニメーションの処理を100％から始める
+                         alternate～アニメーションの処理を0→100→0・・・と折り返して繰り返す
+                         alternate-reverse～アニメーションの処理を100→0→100・・・と折り返して繰り返す*/
+    /*アニメーションが終了したときのスタイルを維持*/
+        //animation-fill-mode: forwards;
+}
+
+@keyframes sk-repeat {
+    0%{
+        transform: scale(0);
+    }
+
+    50%{
+        transform: scale(2);
+        background-color: rgb(165, 255, 29);
+    }
+
+    100%{
+        transform: scale(1);
+        background-color: rgb(117, 175, 30);
+    }
+}
