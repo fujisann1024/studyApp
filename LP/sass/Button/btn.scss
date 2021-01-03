@@ -70,4 +70,57 @@ $cSkyblue: rgba(42, 132, 165, 0.5);
             color:$cWhite;
         }
     }
+
+}
+
+.slider{
+    text-align: center;
+
+    &-btn{
+        background-color: $cWhite;  /*背景色*/
+        color: $cBlue;              /*文字色*/
+        font-weight: 600;           /*文字の太さ*/
+        /*ボックス構造*/
+        border: 1px solid $cBlack;  /*枠線*/
+        padding: 10px 20px;         /*枠線と文字との余白*/
+        margin: 10px 5px 10px 5px;  /*要素同士の余白*/
+
+        cursor: pointer;            /*ホバーしたときのカーソルの種類*/
+
+        position: relative;
+        overflow: hidden; /*親要素からはみ出た部分は表示しない*/
+        z-index: 1;
+
+            
+        //& spanと同じ
+        &::before{
+            /*疑似要素を扱う場合は必要*/
+            content: "";/*要素にテキストを挿入する*/
+            display: inline-block; /*heightとwidthが設定できる*/
+            width: 100%;
+            height: 100%;
+            background-color: $cRed;
+            /*親がrelativeなので右端に合わせる*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateX(-100%);
+            /*変化した際の時間の掛け方*/
+            transition: transform 0.3s;
+            /*親がz-index=1,子がz-index=1--1
+             子が背面に行く*/
+            z-index: -1;
+        }
+
+        &:hover{
+            color: $cWhite;
+
+            &::before{
+                transform: none;
+            }
+        }
+        
+        
+
+    }
 }

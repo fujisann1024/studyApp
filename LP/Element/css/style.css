@@ -1,0 +1,57 @@
+@charset "UTF-8";
+.parent {
+  /*左右の位置の揃え方
+     center～中央揃え
+     left  ～左揃え
+     right ～右揃え*/
+  text-align: center;
+  background-color: gray;
+  height: 800px;
+}
+
+.parent .child {
+  /*ブロック要素を横並びにする*/
+  /*デフォルトはblock*/
+  height: 100px;
+  width: 100px;
+  /*widthが指定されている場合はmargin:auto;で左右均等に配置する*/
+  margin: 0 auto;
+}
+
+.parent .child.child-one {
+  background-color: red;
+}
+
+.parent .child.child-two {
+  background-color: blue;
+}
+
+.parent .child.child-three {
+  background-color: yellow;
+}
+
+/*実行できない*/
+.parent2 {
+  position: relative;
+  background-color: aqua;
+  height: 800px;
+}
+
+.parent2 .child2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.parent2 .child2.child2-one {
+  background-color: green;
+}
+
+.parent2 .child2.child2-two {
+  background-color: orange;
+}
+
+.parent2 .child2.child2-three {
+  background-color: purple;
+}
+/*# sourceMappingURL=style.css.map */
