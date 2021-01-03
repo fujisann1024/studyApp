@@ -1,0 +1,55 @@
+//親
+#square-list{
+    border: solid 1px black;
+    text-align: center;
+
+    //四角形
+    .square{
+        width: 100px;
+        height: 100px;
+        margin: 0;
+        background-color: blue;
+    
+        &.square1{
+            //アニメーションを扱うときに便利
+            transform: translate(50px,30px); /*親要素を基準に位置を変更する
+                                                第一引数 ～x軸
+                                                第二引数 ～y軸*/
+
+            //同じ
+            // transform: translateX(50px);
+            // transform: translateY(30px);
+
+            //transform: translate(100%,100%);単位が％～x軸=自分のwidth
+            //                                         y軸=自分のheight
+
+            
+        }
+
+        &.square2{
+            margin-left: 200px;              //見やすくするため
+            transform: rotate(-30deg);       //回転する角度を決める(値が+だったら)
+            transform-origin: top left;     //回転する軸を決める
+                                            /*top right 右上
+                                            　top left　左上
+                                              bottom right 右下
+                                              bottom left 左下
+                                              center center 中心*/
+        }
+
+        &.square3{
+            transform: scale(1.1, 1.1);
+
+            //同じ
+            // transform: scaleX(1.1);
+            // transform: scaleY(1.1);
+        }
+
+        &.square4{
+            //半角スペースで複数個指定可能
+            transform: translate(100px, -50px) rotate(-50deg) scale(1.1, 2.0);
+        }
+        
+    }
+}
+

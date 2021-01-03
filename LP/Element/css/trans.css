@@ -1,0 +1,44 @@
+@charset "UTF-8";
+#square-list {
+  border: solid 1px black;
+  text-align: center;
+}
+
+#square-list .square {
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  background-color: blue;
+}
+
+#square-list .square.square1 {
+  -webkit-transform: translate(50px, 30px);
+          transform: translate(50px, 30px);
+  /*親要素を基準に位置を変更する
+                                                第一引数 ～x軸
+                                                第二引数 ～y軸*/
+}
+
+#square-list .square.square2 {
+  margin-left: 200px;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  /*top right 右上
+                                            　top left　左上
+                                              bottom right 右下
+                                              bottom left 左下
+                                              center center 中心*/
+}
+
+#square-list .square.square3 {
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+}
+
+#square-list .square.square4 {
+  -webkit-transform: translate(100px, -50px) rotate(-50deg) scale(1.1, 2);
+          transform: translate(100px, -50px) rotate(-50deg) scale(1.1, 2);
+}
+/*# sourceMappingURL=trans.css.map */

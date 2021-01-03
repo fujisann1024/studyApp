@@ -1,0 +1,21 @@
+@charset "UTF-8";
+.parent {
+  color: blue;
+  /*親の1階層下のみ*/
+  /*親の1階層下すべてに適用*/
+}
+
+.parent > .child {
+  color: purple;
+  /*クラス名1クラス名2 ~クラス名1と2をもつ要素
+          クラス名1 クラス名2~クラス名1を親に持ち、クラス2を持つすべての子要素*/
+}
+
+.parent > .child.second-child {
+  color: black;
+}
+
+.child {
+  color: red;
+}
+/*# sourceMappingURL=selector.css.map */

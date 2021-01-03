@@ -1,11 +1,11 @@
 @charset "UTF-8";
 /*値を変数に格納できる*/
-#btn-list {
+.btn-list {
   text-align: center;
   /*cssと違ってネストできる*/
 }
 
-#btn-list .btn {
+.btn-list .btn {
   background-color: white;
   /*背景色*/
   color: blue;
@@ -23,7 +23,7 @@
   /*ホバーしたときのカーソルの種類*/
 }
 
-#btn-list .btn1 {
+.btn-list .btn1 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   /*変化の指定
@@ -32,39 +32,54 @@
   /*「&」は接続する必要がある場合は省略できない*/
 }
 
-#btn-list .btn1:hover {
+.btn-list .btn1:hover {
   background-color: red;
   color: white;
+  -webkit-box-shadow: 5px 5px 5px 10px rgba(42, 132, 165, 0.5);
+          box-shadow: 5px 5px 5px 10px rgba(42, 132, 165, 0.5);
+  /*影のつけ方
+                                           第一引数～X軸
+                                           第二引数～Y軸
+                                           第三引数～影のぼかし具合
+                                           第四引数～影の広がり具合
+                                           第五引数～影の色と透明度*/
 }
 
-#btn-list .btn2 {
+.btn-list .btn2 {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
   /*第三引数　変化の仕方*/
-}
-
-#btn-list .btn2:hover {
   background-color: red;
   color: white;
+  -webkit-box-shadow: 5px 5px 5px rgba(42, 132, 165, 0.5);
+          box-shadow: 5px 5px 5px rgba(42, 132, 165, 0.5);
 }
 
-#btn-list .btn3 {
+.btn-list .btn2:hover {
+  background-color: white;
+  color: blue;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-list .btn3 {
   -webkit-transition: all 1s ease 3s;
   transition: all 1s ease 3s;
   /*第四引数 遅延時間*/
 }
 
-#btn-list .btn3:hover {
+.btn-list .btn3:hover {
   background-color: red;
   color: white;
+  letter-spacing: 3px;
 }
 
-#btn-list .btn4 {
+.btn-list .btn4 {
   -webkit-transition: color 1s ease, background-color 0.3s ease;
   transition: color 1s ease, background-color 0.3s ease;
 }
 
-#btn-list .btn4:hover {
+.btn-list .btn4:hover {
   background-color: red;
   color: white;
 }

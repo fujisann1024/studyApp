@@ -4,17 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/selector.css">
+    <link rel="stylesheet" href="css/trans.css">
 </head>
 <body>
-    <div class="parent">
-        親要素
-        <div class="child">子要素</div>
-        <div class="child">子要素</div>
-        <div class="child">
-            子要素
-            <div class="sun">孫要素</div>
-        </div>
-        
-    </div>
+    <main>
+        <article>
+            <section>
+                <div class="parent">
+                    親要素
+                    <div class="child">子要素</div>
+                    <div class="child second-child">子要素</div>
+                    <div class="child">
+                        子要素
+                        <div class="child">孫要素</div>
+                    </div>
+                </div>
+            </section>
+            <hr>
+            <section>
+                <div id ="square-list">
+                    <div class = "square square1"></div>
+                    <div class = "square square2"></div>
+                    <div class = "square square3"></div>
+                    <div class = "square square4"></div>
+                    </div>
+            </section>
+            <hr>
+            <section>
+                <h1>Positionとz-indexについて学ぶ</h1>
+                <div id = "container-list">
+                    <div class="content1"></div>
+                    <div class="content2"></div>
+                    <div class="content3"></div>
+                    <div class="content4"></div>
+                    
+                </div>
+            </section>
+        </article>
+        <a href="../../LP/LP.html">戻る</a>
+    </main>
+    
 </body>
 </html>
